@@ -41,6 +41,8 @@ namespace Cafetería_gen_13
             //recuperamos las rutas de nuestros XML y XSLT
             string xmlPath = ConfigurationManager.AppSettings["FileServer"].ToString() + "xml/menu.xml";
             string xsltPath = ConfigurationManager.AppSettings["FileServer"].ToString() + "xslt/xsltFile.xslt";
+            string xsltPathMobile = ConfigurationManager.AppSettings["FileServer"].ToString() + "xslt/xsltFile.xslt";
+            string xsltPath_OLD = ConfigurationManager.AppSettings["FileServer"].ToString() + "xslt/xsltFile.xslt";
 
             //leer el archivo XML (importamos "using System.Xml;")
             XmlTextReader xmlTextReader = new XmlTextReader(xmlPath);

@@ -309,7 +309,55 @@
 	<!--Son "microtemplates" que contienen estructura y contenido en función de la página/segmento que se desea mostrar-->
 
 	<xsl:template name="Home">
-		<h1> Hola desde Home</h1>
+		<!-- ======= Why Us Section ======= -->
+		<section id="why-us" class="why-us">
+			<div class="container" data-aos="fade-up">
+
+				<div class="section-title">
+					<h2>Platillos</h2>
+					<p>Nuestros Platillos Favoritos</p>
+				</div>
+
+				<div class="row">
+					<!--Productos Populares desde el XML-->
+					<!--Creo un recorrido para seleccionar el primer platillo de cada tipo de platillo excepto de bebidas-->
+					<xsl:for-each select="Platillos/Tipo[@Nombre != 'Bebidas']/Platillo[@Orden = 2]">
+						<div class="col-lg-4">
+							<div class="box" data-aos="zoom-in" data-aos-delay="100">
+								<div class="section-title">
+									<h2>
+										<!--El nombre del tipo de platillo-->
+										<xsl:value-of select="../@Nombre"/>
+									</h2>
+								</div>
+								<br></br>
+								<!--Inferimos el dato proviniente del Nodo en la propiedad de la etiqueta (Imagen)-->
+								<img src="{Imagen}" alt="{Imagen}" style="width:100%; height:auto;"></img>
+								<br></br>
+								<h4>
+									<!--Aquí muestro el nombre del platillo-->
+									<span style="display:contents;">
+										<!--substring(cadena, lugar inicial, numero de pasos)-->
+										<xsl:value-of select="substring(@Nombre, 1, 1)"/>
+									</span>
+									<!--string-length(cadena) => el total de datos de la cadena-->
+									<xsl:value-of select="substring(@Nombre, 2, string-length(@Nombre))"/>
+								</h4>
+								<h5>
+									<xsl:value-of select="Precio"/>
+								</h5>
+								<p>
+									<xsl:value-of select="Descripcion"/>
+								</p>
+							</div>
+						</div>
+					</xsl:for-each>
+
+				</div>
+
+			</div>
+		</section>
+		<!-- End Why Us Section -->
 	</xsl:template>
 
 	<xsl:template name="Carta">

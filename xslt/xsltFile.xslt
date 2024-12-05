@@ -448,8 +448,8 @@
 			</div>
 		</section>
 		<!-- End Events Section -->
-		
-	<!-- ======= Specials Section ======= -->
+
+		<!-- ======= Specials Section ======= -->
 		<section id="specials" class="specials">
 			<div class="container" data-aos="fade-up">
 
@@ -535,7 +535,54 @@
 	</xsl:template>
 
 	<xsl:template name="Carta">
-		<h1> Hola desde Carta</h1>
+		<!-- ======= Menu Section ======= -->
+		<section id="menu" class="menu section-bg">
+			<div class="container" data-aos="fade-up">
+
+				<div class="section-title">
+					<h2>Menu</h2>
+					<p>Check Our Tasty Menu</p>
+				</div>
+				<!--Selectores-->
+				<div class="row" data-aos="fade-up" data-aos-delay="100">
+					<div class="col-lg-12 d-flex justify-content-center">
+						<ul id="menu-flters">
+							<li data-filter="*" class="filter-active">All</li>
+							<!--Recorro todos los tipos de platillos para seleccionar su Nombre-->
+							<xsl:for-each select="Platillos/Tipo">
+								<!--Infiero el dato correspondiente para que los filtros cambien en función del mimso-->
+								<li data-filter=".filter-{@Nombre}">
+									<xsl:value-of select="@Nombre"/>
+								</li>
+							</xsl:for-each>
+						</ul>
+					</div>
+				</div>
+				<!--Contenido-->
+				<div class="row menu-container" data-aos="fade-up" data-aos-delay="200">
+
+					<!--Recuperar los elementos que coincidan con las clases de mi XML-->
+					<xsl:for-each select="Platillos/Tipo/Platillo">
+						<div class="col-lg-6 menu-item filter-{../@Nombre}">
+							<img src="{Imagen}" class="menu-img" alt="{Imagen}"></img>
+							<div class="menu-content">
+								<a href="#">
+									<xsl:value-of select="@Nombre"/>
+								</a>
+								<span>
+									<xsl:value-of select="Precio"/>
+								</span>
+							</div>
+							<div class="menu-ingredients">
+								<xsl:value-of select="Descripcion"/>
+							</div>
+						</div>
+					</xsl:for-each>
+				</div>
+
+			</div>
+		</section>
+		<!-- End Menu Section -->
 	</xsl:template>
 
 	<xsl:template name="Contacto">

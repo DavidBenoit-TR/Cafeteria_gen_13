@@ -157,6 +157,37 @@
 				<Imagen>assets/img/agua.jpeg</Imagen>
 			</Platillo>
 		</Tipo>
+
+		<Tipo Nombre="Bebidas Alcoholicas">
+			<Platillo Nombre="Gomi Chelas" Orden="1">
+				<Descripcion><![CDATA[ Coca Cola, Sprite, Sidral]]></Descripcion>
+				<Precio>
+					$15
+				</Precio>
+				<Imagen>assets/img/refrescos.jpeg</Imagen>
+			</Platillo>
+			<Platillo Nombre="Agua Locas" Orden="2">
+				<Descripcion><![CDATA[ Horchata, Jamaica y Limón]]></Descripcion>
+				<Precio>
+					$12
+				</Precio>
+				<Imagen>assets/img/aguas.jpeg</Imagen>
+			</Platillo>
+			<Platillo Nombre="Licor de Caña" Orden="3">
+				<Descripcion><![CDATA[ Corona, Indio, Heineken, TKT]]></Descripcion>
+				<Precio>
+					$30
+				</Precio>
+				<Imagen>assets/img/cervez.jpeg</Imagen>
+			</Platillo>
+			<Platillo Nombre="Coñac" Orden="4">
+				<Descripcion><![CDATA[ Agua natural]]></Descripcion>
+				<Precio>
+					$5
+				</Precio>
+				<Imagen>assets/img/agua.jpeg</Imagen>
+			</Platillo>
+		</Tipo>
 	</Platillos>
 
 	<Datos>

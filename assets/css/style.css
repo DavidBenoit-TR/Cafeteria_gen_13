@@ -14,9 +14,14 @@ body {
   color: #fff;
 }
 
+/*img{
+    width:100px;
+    height:100px;
+}*/
+
 a {
-  color: #cda45e;
-  text-decoration: none;
+    color: #cda45e;
+    text-decoration: none;
 }
 
 a:hover {
@@ -1002,7 +1007,7 @@ section {
   color: #cda45e;
 }
 
-.specials .nav-link.active {
+/*.specials .nav-link.active {
   color: #1a1814;
   background: #cda45e;
   border-color: #cda45e;
@@ -1015,7 +1020,7 @@ section {
 .specials .tab-pane.active {
   -webkit-animation: fadeIn 0.5s ease-out;
   animation: fadeIn 0.5s ease-out;
-}
+}*/
 
 .specials .details h3 {
   font-size: 26px;

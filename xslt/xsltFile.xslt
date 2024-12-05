@@ -358,6 +358,180 @@
 			</div>
 		</section>
 		<!-- End Why Us Section -->
+
+		<!-- ======= Events Section ======= -->
+		<section id="events" class="events">
+			<div class="container" data-aos="fade-up">
+
+				<div class="section-title">
+					<h2>Especialidades</h2>
+					<p>Conoce nuestros platillos especiales</p>
+				</div>
+
+				<div class="events-slider swiper-container" data-aos="fade-up" data-aos-delay="100">
+					<div class="swiper-wrapper">
+						<!--Recorro todos los platillos para seleccionar solo aquellos que son especialidad-->
+						<xsl:for-each select="Platillos/Tipo/Platillo[@Especialidad = 'SI']">
+							<div class="swiper-slide">
+								<div class="row event-item">
+									<div class="col-lg-6">
+										<!--Voy Inferir la imagen en su posición 1-->
+										<img src="{Imagen[position()=1]}" class="img-fluid" alt="{Imagen[position()=1]}"></img>
+									</div>
+
+									<div class="col-lg-6 pt-4 pt-lg-0 content">
+										<h3>
+											<!--Recuper el nombre del platillo-->
+											<xsl:value-of select="@Nombre"/>
+										</h3>
+										<div class="price">
+											<p>
+												<span>
+													<!--Recuperamos el Preico del Platillo-->
+													<xsl:value-of select="Precio"/>
+												</span>
+											</p>
+										</div>
+										<p class="fst-italic">
+											<!--Recuperamos el texto especial-->
+											<xsl:value-of select="TextoEspecial"/>
+										</p>
+										<!--Ingredientes-->
+										<div class="col-lg-12">
+											<!--Imagen-->
+											<div class="col-lg-12">
+												<div class="col-lg-6 pt-4 pt-lg-0 content">
+													<h3>
+														<!--Recuperamos el nombre de los ingredientes-->
+														<xsl:value-of select="Ingredientes/Ingrediente[position()=1]/@Nombre"/>
+													</h3>
+													<p>
+														<!--Recuperamos el nombre de los ingredientes-->
+														<xsl:value-of select="Ingredientes/Ingrediente[position()=1]"/>
+
+													</p>
+												</div>
+												<!--inferimos la imagen en su pocision 1-->
+												<img src="{Imagen[position()=2]}" class="img-fluid" alt=""/>
+											</div>
+											<!--Textos-->
+											<div class="col-lg-12">
+												<div class="row event-item">
+													<!--Recorrer el resto de ingredientes-->
+													<xsl:for-each select="Ingredientes/Ingrediente[position()>1]">
+														<div class="col-lg-6 pt-4 pt-lg-0 content">
+															<h3>
+																<!--recuperamos el nombre de los ingredientes-->
+																<xsl:value-of select="@Nombre"/>
+															</h3>
+															<p class="fst-italic">
+																<!--recuperamos el valor de los ingredientes-->
+																<xsl:value-of select="Ingredientes/Ingrediente[position()=1]"/>
+															</p>
+															<!--inferimos la imagen en su pocision 1-->
+															<img src="{@Imagen}" class="img-fluid" alt=""/>
+														</div>
+													</xsl:for-each>
+												</div>
+
+											</div>
+										</div>
+									</div>
+
+								</div>
+							</div>
+						</xsl:for-each>
+					</div>
+					<div class="swiper-pagination"></div>
+				</div>
+
+			</div>
+		</section>
+		<!-- End Events Section -->
+		
+	<!-- ======= Specials Section ======= -->
+		<section id="specials" class="specials">
+			<div class="container" data-aos="fade-up">
+
+				<div class="section-title">
+					<h2>Specials</h2>
+					<p>Check Our Specials</p>
+				</div>
+
+				<div class="row" data-aos="fade-up" data-aos-delay="100">
+					<!--Barra lateral-->
+					<div class="col-lg-3">
+						<ul class="nav nav-tabs flex-column">
+							<!--Recorremos cada bebida por su nombre y orden-->
+							<xsl:for-each select="Platillos/Tipo[@Nombre='Bebidas']/Platillo">
+								<li class="nav-item">
+									<xsl:choose>
+										<xsl:when test="@Orden = 1">
+											<a class="nav-link active show" data-bs-toggle="tab" href="#tab-{@Orden}">
+												<xsl:value-of select="@Nombre"/>
+											</a>
+										</xsl:when>
+										<xsl:otherwise>
+											<a class="nav-link show" data-bs-toggle="tab" href="#tab-{@Orden}">
+												<xsl:value-of select="@Nombre"/>
+											</a>
+										</xsl:otherwise>
+									</xsl:choose>
+								</li>
+							</xsl:for-each>
+
+						</ul>
+					</div>
+					<!--Contenido-->
+					<div class="col-lg-9 mt-4 mt-lg-0">
+						<div class="tab-content">
+							<!--Recorremos cada bebida por su nombre y orden-->
+							<xsl:for-each select="Platillos/Tipo[@Nombre='Bebidas']/Platillo">
+								<xsl:choose>
+									<xsl:when test="@Orden = 1">
+										<div class="tab-pane active show" id="tab-{@Orden}">
+											<div class="row">
+												<div class="col-lg-8 details order-2 order-lg-1">
+													<h3>
+														<xsl:value-of select="Precio"/>
+													</h3>
+													<p class="fst-italic">
+														<xsl:value-of select="Descripcion"/>
+													</p>
+												</div>
+												<div class="col-lg-4 text-center order-1 order-lg-2">
+													<img src="{Imagen}" alt="" class="img-fluid"></img>
+												</div>
+											</div>
+										</div>
+									</xsl:when>
+									<xsl:otherwise>
+										<div class="tab-pane show" id="tab-{@Orden}">
+											<div class="row">
+												<div class="col-lg-8 details order-2 order-lg-1">
+													<h3>
+														<xsl:value-of select="Precio"/>
+													</h3>
+													<p class="fst-italic">
+														<xsl:value-of select="Descripcion"/>
+													</p>
+												</div>
+												<div class="col-lg-4 text-center order-1 order-lg-2">
+													<img src="{Imagen}" alt="" class="img-fluid"></img>
+												</div>
+											</div>
+										</div>
+									</xsl:otherwise>
+								</xsl:choose>
+							</xsl:for-each>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</section>
+		<!-- End Specials Section -->
+
 	</xsl:template>
 
 	<xsl:template name="Carta">

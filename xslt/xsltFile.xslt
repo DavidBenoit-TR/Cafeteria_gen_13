@@ -616,7 +616,7 @@
 			// Use the 'v' parameter to indicate the version to load (alpha, beta, weekly, etc.)
 			});]]>
 		</script>
-		
+
 		<!--Referencia a mi archivo JS-->
 		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCWeeateTaYGqsHhNcmoDfT7Us-vLDZVPs&amp;callback=initMap" async="" defer=""></script>
 
@@ -801,6 +801,56 @@ $('#contact_fecha').attr('value', fechaFormatted)
 	</xsl:template>
 
 	<xsl:template name="PlayRoom">
-		<h1> Hola desde PlayRoom</h1>
+
+		<!--Referencia a CSS-->
+		<link href="assets/css/DragandDrop.css" rel="stylesheet"></link>
+		<!--Referencia JS-->
+		<script src="assets/js/DragandDrop.js" type="text/javascript"></script>
+
+		<div class="container">
+			<!--Audio-->
+			<section class="tm-section-row p-5">
+				<br></br>
+				<br></br>
+				<h2>Audio</h2>
+				<div id="Audio" style="width:100%">
+					<img src="assets/img/gallery/gallery-1.jpg" width="100%"></img>
+					<audio controls="true" style="width:100%" autoplay="autoplay">
+						<source src="assets/audio.mp3"></source>
+					</audio>
+				</div>
+			</section>
+			<!--Video-->
+			<section class="tm-section-row p-5">
+				<h2>Video</h2>
+				<div id="Video" style="width:100%">
+					<video controls="true" width="100%" poster="assets/img/gallery/gallery-2.jpg">
+						<source src="assets/GoProHW.mp4"></source>
+					</video>
+				</div>
+				<br></br>
+				<br></br>
+			</section>
+			<!--Drag and Drop-->
+			<section class="tm-section-row p-5">
+				<h2 class="col-lg-12 mb-30"> <![CDATA[Drag & Drop]]></h2>
+				<!--Cuadro1-->
+				<div id="cuadro1" ondragenter="return enter(event)" ondragover="return over(event)" ondragleave="return leave(event)" ondrop="return drop(event)">
+					<!--cuadradito1-->
+					<div class="cuadradito" id="arrastrable1" draggable="true" ondragstart="start(event)" ondragend="end(event)"></div>
+					<!--cuadradito2-->
+					<div class="cuadradito" id="arrastrable2" draggable="true" ondragstart="start(event)" ondragend="end(event)"></div>
+					<!--cuadradito3-->
+					<div class="cuadradito" id="arrastrable3" draggable="true" ondragstart="start(event)" ondragend="end(event)"></div>
+				</div>
+				<!--Cuadro2-->
+				<div id="cuadro2" ondragenter="return enter(event)" ondragover="return over(event)" ondragleave="return leave(event)"></div>
+				<!--Cuadro3-->
+				<div id="cuadro3" ondragenter="return enter(event)" ondragover="return over(event)" ondragleave="return leave(event)" ondrop="return clone(event)"></div>
+				<!--Cuadro4 (papelera)-->
+				<div id="papelera" ondragenter="return enter(event)" ondragover="return over(event)" ondragleave="return leave(event)" ondrop="return remove(event)"></div>
+			</section>
+		</div>
+
 	</xsl:template>
 </xsl:stylesheet>
